@@ -93,7 +93,7 @@ of creating reusable function that might be needed later.
 
 For example in the solution above my "main" control flow is as follows
 
-```
+```javascript
 const rawData = getData('data.txt')
 var sums = processData(rawData)
 
@@ -110,7 +110,7 @@ This approach also has the added benefit of allowing us to modify any of the
 actual logic used with out having to affect the over flow of the program. For
 example:
 
-```
+```javascript
 function sortArr(arr) {
   const maxNum = Math.max(...arr)
   const maxNumDigits = Math.floor(Math.log10(maxNum)) + 1
@@ -132,9 +132,9 @@ function getDigit(num, i) {
 }
 ```
 
-I have decided to use a radix sort method to sort the array here however I could
-easily substitute this for any other sorting method provided in returns an array
-of descending values.
+I have decided to use an "off the shelf" radix sort method to sort the array
+here however I could easily substitute this for any other sorting method
+provided in returns an array of descending values.
 
 ### Logic
 

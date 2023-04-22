@@ -26,8 +26,8 @@ function getDigit(num, i) {
 }
 
 /*  
-    This function will take the data array split it into each elf and then asyncrosly
-    sum the amount of calories each elf has. Once finished it will return an array of
+    This function will take the data array split it into each elf and then sum 
+    the amount of calories each elf has. Once finished it will return an array of
     all the summed values.
 */
 function processData(data) {
@@ -61,7 +61,7 @@ function getData(filename) {
 
 
 /*
-    This function will print the desirded answer to the console.
+    This function will print the desired answer to the console.
     the numberOfElves variable indicated how many of the elves with
     the most calories we want to know the answer too. The orderedList
     is the ordered sum of all the elves

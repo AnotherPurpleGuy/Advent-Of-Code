@@ -2,7 +2,7 @@ const fs = require('fs')
 const { exit } = require('process')
 
 /*
-    This radexSort function will take and array of numbers and return it in decending 
+    This radixSort function will take and array of numbers and return it in descending 
     order
 */
 function sortArr(arr) {

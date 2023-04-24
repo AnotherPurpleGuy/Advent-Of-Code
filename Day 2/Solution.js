@@ -12,10 +12,25 @@ function getData (filename) {
   }
 }
 
+function convertLetter (letter) {
+  if (letter === 'A' || letter === 'X') return 0
+  if (letter === 'B' || letter === 'Y') return 1
+  if (letter === 'C' || letter === 'Z') return 2
+}
+
+function makeDataArray (inputString) {
+  const dataArray = inputString.split('\r\n').map((element) => {
+    const game = element.split(' ').map((letter) => convertLetter(letter))
+    return game
+  })
+
+  return dataArray
+}
+
 if (isMainThread) {
   const dataString = getData('data.txt')
-
-  console.log(dataString)
+  const gameDataArray = makeDataArray(dataString)
+  console.log(gameDataArray)
 
   // Generate a random array with 1000 elements
   const arr = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100))

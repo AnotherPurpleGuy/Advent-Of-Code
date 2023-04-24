@@ -53,7 +53,7 @@ function getData(filename) {
 
   } catch (err) {
 
-    console.log('Error reading the file : ' + err.message)
+    console.error('Error reading the file : ' + err.message)
     exit()
 
   }

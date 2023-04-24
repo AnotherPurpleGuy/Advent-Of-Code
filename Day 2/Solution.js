@@ -34,12 +34,19 @@ function makeDataArray (inputString) {
   return dataArray
 }
 
-if (isMainThread) {
-  const dataString = getData('data.txt')
-  const gameDataArray = makeDataArray(dataString)
-  console.log(gameDataArray)
+function makeLookUpTable (inputString) {
+  const arr = inputString.split('\r\n').map((element) => {
+    return element.split(',')
+  })
+  return arr
+}
 
-  console.log(getData('problem'))
+if (isMainThread) {
+  const gameDataArray = makeDataArray(getData('data.txt'))
+  const lookupTable = makeLookUpTable(getData('problem-1-lookup-table.txt'))
+  console.log(lookupTable)
+
+  console.log(getData())
   // Generate a random array with 1000 elements
   const arr = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100))
 

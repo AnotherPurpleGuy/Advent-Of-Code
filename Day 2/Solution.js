@@ -39,6 +39,7 @@ if (isMainThread) {
   const gameDataArray = makeDataArray(dataString)
   console.log(gameDataArray)
 
+  console.log(getData('problem'))
   // Generate a random array with 1000 elements
   const arr = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100))
 

@@ -44,6 +44,13 @@ function processData(data) {
   return dataArray
 }
 
+/**
+ * function will take a filename as a string as an argument and try and open it
+ * as a 'utf-8' document. If there is an issue opening or reading the file the
+ * error will be printed via 'console.error()' and the program will exit.
+ * @param {string} filename 
+ * @returns contents of file as a string
+ */
 function getData(filename) {
   
   try {

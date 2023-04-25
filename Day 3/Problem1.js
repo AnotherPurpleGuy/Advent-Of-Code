@@ -1,4 +1,4 @@
-const { getData, addOrUpdateKey } = require('./Common')
+const { getData, addOrUpdateKey, checkForLetterAndRemove, letterToNumber } = require('./Common')
 
 /**
  * function will take one long string containing the input and split it by line.
@@ -7,7 +7,7 @@ const { getData, addOrUpdateKey } = require('./Common')
  * @param {string} input
  * @returns array
  */
-function probOneParcer (input) {
+function probOneParser (input) {
   const arr = input.split('\r\n').map((element) => {
     const elementLen = element.length
 
@@ -20,17 +20,27 @@ function probOneParcer (input) {
   return arr
 }
 
-const dataSet = probOneParcer(getData('data.txt'))
-const collisionLetters = ''
+const dataSet = probOneParser(getData('data.txt'))
+let collisionLetters = ''
 
 dataSet.forEach((element) => {
-  const map = new Map()
-  const collisions = ''
+  let map = new Map()
 
-  for (const letter in element[0]) {
-    addOrUpdateKey(map, letter)
-  }
+  element[0].split('').forEach((letter) => {
+    map = addOrUpdateKey(map, letter)
+  })
 
-  
-
+  element[1].split('').forEach((letter) => {
+    const match = checkForLetterAndRemove(map, letter)
+    if (match) {
+      collisionLetters += match
+    }
+  })
 })
+
+const result = collisionLetters.split('').reduce((acc, letter) => {
+  return acc + letterToNumber(letter)
+}
+, 0)
+
+console.log(result)

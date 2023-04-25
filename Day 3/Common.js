@@ -31,6 +31,7 @@ function addOrUpdateKey (map, key) {
   } else {
     map.set(key, 1)
   }
+  return map
 }
 
 /**
@@ -40,13 +41,23 @@ function addOrUpdateKey (map, key) {
  * @param {string} keyToFind
  * @returns key
  */
-function findKey (map, keyToFind) {
+function checkForLetterAndRemove (map, keyToFind) {
   for (const key of map.keys()) {
     if (key === keyToFind) {
+      map.delete(key)
       return key
     }
   }
   return null // key not found
 }
 
-module.exports = { getData, addOrUpdateKey }
+function letterToNumber (letter) {
+  const asciiCode = letter.charCodeAt(0)
+  if (asciiCode > 96) {
+    return asciiCode - 96
+  } else {
+    return asciiCode - 38
+  }
+}
+
+module.exports = { getData, addOrUpdateKey, checkForLetterAndRemove, letterToNumber }

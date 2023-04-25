@@ -18,4 +18,19 @@ function getData (filename) {
   }
 }
 
-module.exports = { getData }
+/**
+ * function will take a map, a key. If the key is already in the map it will
+ * increment the value by 1 in not in will make a new key in the map with the
+ * value being set to 1
+ * @param {map} map
+ * @param {key} key
+ */
+function addOrUpdateKey (map, key) {
+  if (map.has(key)) {
+    map.set(key, map.get(key) + 1)
+  } else {
+    map.set(key, 1)
+  }
+}
+
+module.exports = { getData, addOrUpdateKey }

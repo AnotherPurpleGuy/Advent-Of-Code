@@ -21,7 +21,7 @@ function probOneParser (input) {
 }
 
 const dataSet = probOneParser(getData('data.txt'))
-let collisionLetters = ''
+let result = 0
 
 dataSet.forEach((element) => {
   let map = new Map()
@@ -33,14 +33,9 @@ dataSet.forEach((element) => {
   element[1].split('').forEach((letter) => {
     const match = checkForLetterAndRemove(map, letter)
     if (match) {
-      collisionLetters += match
+      result += letterToNumber(match)
     }
   })
 })
-
-const result = collisionLetters.split('').reduce((acc, letter) => {
-  return acc + letterToNumber(letter)
-}
-, 0)
 
 console.log(result)

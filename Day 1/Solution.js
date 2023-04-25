@@ -4,7 +4,7 @@ const { exit } = require('process')
 /**
  * Function will take an unsorted array on ints and then sort them into
  * descending order using the radix sort algorithm
- * @param {Array} arr 
+ * @param {Array} arr
  * @returns Array
  */
 function sortArr (arr) {

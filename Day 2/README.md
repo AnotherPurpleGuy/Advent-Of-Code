@@ -74,3 +74,16 @@ score of 12.
 
 Following the Elf's instructions for the second column, what would your total
 score be if everything goes exactly according to your strategy guide?
+
+## Comments
+
+I decided to challenge myself of this exercise. I decided to not create any
+complex logic that would be used to "play out each game" but instead decided to
+use game theory to figure out a game value matrix. This works by changing the
+letters given to us into integers which can then be used to index into the 2D
+array and find that value of that game.
+
+The challenging part came form deciding to make the process of looking up these
+results multi threaded. While using promises would have been the obvious choice
+for this I decided to stretch myself and use workers in a similar way to how
+fork() working in C.

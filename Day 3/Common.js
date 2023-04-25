@@ -25,7 +25,7 @@ function getData (filename) {
  * @param {map} map
  * @param {key} key
  */
-function addOrUpdateKey (map, key) {
+function addKey (map, key) {
   if (map.has(key)) {
     map.set(key, map.get(key) + 1)
   } else {
@@ -66,4 +66,4 @@ function letterToNumber (letter) {
   }
 }
 
-module.exports = { getData, addOrUpdateKey, checkForLetterAndRemove, letterToNumber }
+module.exports = { getData, addKey, checkForLetterAndRemove, letterToNumber }

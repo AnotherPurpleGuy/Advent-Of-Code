@@ -1,4 +1,4 @@
-const { getData, addOrUpdateKey, checkForLetterAndRemove, letterToNumber } = require('./Common')
+const { getData, addKey, checkForLetterAndRemove, letterToNumber } = require('./Common')
 
 /**
  * function will take one long string containing the input and split it by line.
@@ -27,7 +27,7 @@ dataSet.forEach((element) => {
   let map = new Map()
 
   element[0].split('').forEach((letter) => {
-    map = addOrUpdateKey(map, letter)
+    map = addKey(map, letter)
   })
 
   element[1].split('').forEach((letter) => {

@@ -54,7 +54,7 @@ function checkForLetterAndRemove (map, keyToFind) {
 /**
  * function will take a single letter a-Z and return the corresponding integer
  * 1-52
- * @param {string} letter 
+ * @param {string} letter
  * @returns int
  */
 function letterToNumber (letter) {

@@ -19,15 +19,14 @@ function getData (filename) {
 }
 
 /**
- * function will take a map, a key. If the key is already in the map it will
- * increment the value by 1 in not in will make a new key in the map with the
- * value being set to 1
+ * function will take a map, a key. If the key is not already in the map it will
+ * add it else it will return the map
  * @param {map} map
  * @param {key} key
  */
 function addKey (map, key) {
   if (map.has(key)) {
-    map.set(key, map.get(key) + 1)
+    return map
   } else {
     map.set(key, 1)
   }

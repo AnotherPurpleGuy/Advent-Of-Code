@@ -19,6 +19,21 @@ function getData (filename) {
 }
 
 /**
+ * function this function takes a string a returns a map of each charter
+ * @param {string} string
+ * @returns Map
+ */
+function generateMap (string) {
+  let map = new Map()
+
+  string.split('').forEach((letter) => {
+    map = addKey(map, letter)
+  })
+
+  return map
+}
+
+/**
  * function will take a map, a key. If the key is not already in the map it will
  * add it else it will return the map
  * @param {map} map
@@ -65,4 +80,4 @@ function letterToNumber (letter) {
   }
 }
 
-module.exports = { getData, addKey, checkForLetterAndRemove, letterToNumber }
+module.exports = { getData, addKey, checkForLetterAndRemove, letterToNumber, generateMap }

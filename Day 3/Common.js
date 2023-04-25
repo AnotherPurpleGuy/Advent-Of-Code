@@ -51,6 +51,12 @@ function checkForLetterAndRemove (map, keyToFind) {
   return null // key not found
 }
 
+/**
+ * function will take a single letter a-Z and return the corresponding integer
+ * 1-52
+ * @param {string} letter 
+ * @returns int
+ */
 function letterToNumber (letter) {
   const asciiCode = letter.charCodeAt(0)
   if (asciiCode > 96) {

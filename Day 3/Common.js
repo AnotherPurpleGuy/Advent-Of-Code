@@ -33,4 +33,20 @@ function addOrUpdateKey (map, key) {
   }
 }
 
+/**
+ * function will check in the given map in the key is present and if it is it
+ * will return the key
+ * @param {map} map
+ * @param {string} keyToFind
+ * @returns key
+ */
+function findKey (map, keyToFind) {
+  for (const key of map.keys()) {
+    if (key === keyToFind) {
+      return key
+    }
+  }
+  return null // key not found
+}
+
 module.exports = { getData, addOrUpdateKey }

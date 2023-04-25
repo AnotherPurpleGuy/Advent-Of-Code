@@ -1,10 +1,10 @@
-const { getData } = require('./Common')
+const { getData, addOrUpdateKey } = require('./Common')
 
 /**
  * function will take one long string containing the input and split it by line.
  * The for each line it will split it half and return an array of 2D arrays
  * containing the first and second half of that line
- * @param {string} input 
+ * @param {string} input
  * @returns array
  */
 function probOneParcer (input) {
@@ -19,3 +19,18 @@ function probOneParcer (input) {
 
   return arr
 }
+
+const dataSet = probOneParcer(getData('data.txt'))
+const collisionLetters = ''
+
+dataSet.forEach((element) => {
+  const map = new Map()
+  const collisions = ''
+
+  for (const letter in element[0]) {
+    addOrUpdateKey(map, letter)
+  }
+
+  
+
+})

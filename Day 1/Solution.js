@@ -1,10 +1,12 @@
 const fs = require('fs')
 const { exit } = require('process')
 
-/*
-    This radixSort function will take and array of numbers and return it in descending
-    order
-*/
+/**
+ * Function will take an unsorted array on ints and then sort them into
+ * descending order using the radix sort algorithm
+ * @param {Array} arr 
+ * @returns Array
+ */
 function sortArr (arr) {
   const maxNum = Math.max(...arr)
   const maxNumDigits = Math.floor(Math.log10(maxNum)) + 1
@@ -58,12 +60,12 @@ function getData (filename) {
   }
 }
 
-/*
-    This function will print the desired answer to the console.
-    the numberOfElves variable indicated how many of the elves with
-    the most calories we want to know the answer too. The orderedList
-    is the ordered sum of all the elves
-*/
+/**
+ * function will take the number of elves you want to know the total calories
+ * for and an ordered list of all the elves with there total number of calories
+ * @param {integer} numberOfElves
+ * @param {Array} orderedList
+ */
 function printAnswer (numberOfElves, orderedList) {
   const tmp = orderedList.slice(0, numberOfElves)
   const total = tmp.reduce((acc, num) => {

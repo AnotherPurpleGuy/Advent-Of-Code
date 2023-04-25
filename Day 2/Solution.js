@@ -19,6 +19,12 @@ function getData (filename) {
   }
 }
 
+/**
+ * function will take a string that should be a single char and convert it to an
+ * int depending on what the character is
+ * @param {string} letter
+ * @returns int
+ */
 function convertLetter (letter) {
   if (letter === 'A' || letter === 'X') return 0
   if (letter === 'B' || letter === 'Y') return 1
@@ -49,7 +55,7 @@ if (isMainThread) {
   const chunkSize = Math.ceil(gameDataArray.length / 4)
   const chunks = Array.from({ length: 4 }, (_, i) => gameDataArray.slice(i * chunkSize, (i + 1) * chunkSize))
 
-  // Create the workers and pass the chunks as workerData
+  // Create the workers and pass the chunks and lookup table as workerData
   const workers = chunks.map((chunk) => {
     const workerData = {
       workerChunk: chunk,
@@ -74,7 +80,7 @@ if (isMainThread) {
     })
   })
 } else {
-  // Get our data out of the passed object and initialize our sum var
+  // This is where the worker thread starts it's execution
   const workerChunk = workerData.workerChunk
   const lookUpTable = workerData.lookUpTable
 

@@ -1,4 +1,4 @@
-const { getData, addKey, checkForLetterAndRemove, letterToNumber } = require('./Common')
+const { getData, addKey, checkForLetterAndRemove, letterToNumber, generateMap } = require('./Common')
 
 /**
  * function will take one long string containing the input and split it by line.
@@ -24,11 +24,7 @@ const dataSet = probOneParser(getData('data.txt'))
 let result = 0
 
 dataSet.forEach((element) => {
-  let map = new Map()
-
-  element[0].split('').forEach((letter) => {
-    map = addKey(map, letter)
-  })
+  const map = generateMap(element[0])
 
   element[1].split('').forEach((letter) => {
     const match = checkForLetterAndRemove(map, letter)

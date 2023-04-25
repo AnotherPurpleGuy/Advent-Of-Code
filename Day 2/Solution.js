@@ -36,26 +36,28 @@ function makeDataArray (inputString) {
 
 function makeLookUpTable (inputString) {
   const arr = inputString.split('\r\n').map((element) => {
-    return element.split(',')
+    return element.split(',').map((num) => parseInt(num))
   })
   return arr
 }
 
 if (isMainThread) {
   const gameDataArray = makeDataArray(getData('data.txt'))
-  const lookupTable = makeLookUpTable(getData('problem-1-lookup-table.txt'))
-  console.log(lookupTable)
-
-  console.log(getData())
-  // Generate a random array with 1000 elements
-  const arr = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 100))
+  const gameValues = makeLookUpTable(getData('problem-1-lookup-table.txt'))
 
   // Split the array into 4 parts for the workers
-  const chunkSize = Math.ceil(arr.length / 4)
-  const chunks = Array.from({ length: 4 }, (_, i) => arr.slice(i * chunkSize, (i + 1) * chunkSize))
+  const chunkSize = Math.ceil(gameDataArray.length / 4)
+  const chunks = Array.from({ length: 4 }, (_, i) => gameDataArray.slice(i * chunkSize, (i + 1) * chunkSize))
 
   // Create the workers and pass the chunks as workerData
-  const workers = chunks.map((chunk) => new Worker(__filename, { workerData: chunk }))
+  const workers = chunks.map((chunk) => {
+    const workerData = {
+      workerChunk: chunk,
+      lookUpTable: gameValues
+    }
+
+    return new Worker(__filename, { workerData })
+  })
 
   // Initialize the results array
   const results = Array.from({ length: 4 }, () => null)
@@ -72,23 +74,20 @@ if (isMainThread) {
     })
   })
 } else {
-  // This is a worker thread
+  // Get our data out of the passed object and initialize our sum var
+  const workerChunk = workerData.workerChunk
+  const lookUpTable = workerData.lookUpTable
 
-  // Initialize the sum variable
   let sum = 0
 
   // Loop until there are no more elements in the array
-  while (workerData.length > 0) {
-    // Pop an element from the array and perform the split, cast, and sum
-    const num = workerData.pop()
-    const split = num.toString().split('')
-    const cast = split.map((char) => parseInt(char))
-    const subSum = cast.reduce((acc, num) => acc + num, 0)
-
-    // Add the sub-sum to the worker's sum variable
-    sum += subSum
+  while (workerChunk.length > 0) {
+    // Pop an element from the array and perform the split, lookup, and sum
+    const game = workerChunk.pop()
+    const gameValue = lookUpTable[game[0]][game[1]]
+    sum = gameValue + sum
   }
 
   // Send the result back to the main thread
-  require('worker_threads').parentPort.postMessage(sum)
+  parentPort.postMessage(sum)
 }

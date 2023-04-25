@@ -48,8 +48,10 @@ function makeLookUpTable (inputString) {
 }
 
 if (isMainThread) {
+  // ENTRY POINT: get data and set lookup table. Change lookup table for problem
+  // 1 and 2
   const gameDataArray = makeDataArray(getData('data.txt'))
-  const gameValues = makeLookUpTable(getData('problem-1-lookup-table.txt'))
+  const gameValues = makeLookUpTable(getData('problem-2-lookup-table.txt'))
 
   // Split the array into 4 parts for the workers
   const chunkSize = Math.ceil(gameDataArray.length / 4)

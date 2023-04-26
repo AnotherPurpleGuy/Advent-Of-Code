@@ -105,5 +105,7 @@ is the sum of the priorities of those item types?
 
 ## Comments
 
-For this problem I have chosen to show how simple functions can be collected and
-shared between different code bases.
+Due to a lack of time I have not been able to spend as long on this excercise a
+the others so I had to limit my scope to using a different data structure than 
+just arrays and also showing how commonly used functions benifit from being 
+moved to there own file and then being referenced from our solution files.

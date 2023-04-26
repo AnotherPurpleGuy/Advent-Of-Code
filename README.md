@@ -1,7 +1,7 @@
 # Advent-Of-Code
 
-These are my answers to the "Advent of Code" programming challenges written in
-JavaScript
+These are my answers to the [Advent of Code](https://adventofcode.com/) 
+programming challenges written in JavaScript 
 
 The coding done here is for the purposes of demonstrating my ability to use
 JavaScript and solve problems using computer science principles. As such the

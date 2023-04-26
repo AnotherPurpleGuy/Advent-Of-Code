@@ -84,7 +84,7 @@ Elves carrying in total?
 
 ## Commentary
 
-### Layout
+### Layout and Design Decisions
 
 Personally I am a big fan of separating code out into smaller functions that are
 uses to accomplish a very specific job. I find this to be a much better way of
@@ -135,6 +135,3 @@ function getDigit(num, i) {
 I have decided to use an "off the shelf" radix sort method to sort the array
 here however I could easily substitute this for any other sorting method
 provided in returns an array of descending values.
-
-### Logic
-
